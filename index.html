@@ -24,20 +24,16 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 min-h-screen">
-    <div class="max-w-4xl mx-auto">
+<body class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 min-h-screen flex flex-col">
+    <div class="max-w-4xl mx-auto w-full flex-1">
         <!-- Header -->
-        <header class="bg-white border-b border-emerald-100 py-6 px-8 flex items-center justify-between">
+        <header class="bg-white border-b border-emerald-100 py-6 px-8 flex items-center">
             <div class="flex items-center gap-3">
                 <div class="w-11 h-11 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-inner">🛒</div>
                 <div>
                     <h1 class="title-font text-4xl font-semibold tracking-tighter text-emerald-900">OverstimulatedShopper</h1>
                     <p class="text-emerald-600 text-sm -mt-1">Get in, grab everything, get out.</p>
                 </div>
-            </div>
-            <div class="hidden md:flex items-center text-sm font-medium text-emerald-700">
-                <i class="fas fa-map-pin mr-1"></i>
-                Powered by real Google search results
             </div>
         </header>
 
@@ -116,7 +112,7 @@ peanut butter"
             <!-- SCANNING STATUS -->
             <div id="scanning-status" class="hidden bg-white rounded-3xl shadow-xl p-12 text-center">
                 <div class="mx-auto w-16 h-16 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin"></div>
-                <p class="mt-6 text-emerald-700 font-medium text-lg">Searching Google’s top results for every item…</p>
+                <p class="mt-6 text-emerald-700 font-medium text-lg">Searching Google's top results for every item…</p>
                 <p class="text-emerald-600 text-sm mt-2">This usually takes 1–2 seconds</p>
             </div>
 
@@ -124,6 +120,13 @@ peanut butter"
             <div id="results" class="hidden"></div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-emerald-100 py-5 px-8 text-center">
+        <p class="title-font text-emerald-700 text-sm font-medium tracking-tight">
+            © 2026 Rylee — Made with ❤️ and pure HTML
+        </p>
+    </footer>
 
     <script>
         const GEOAPIFY_API_KEY = "afc7d9f254ae41f6872819daf3d62630";
@@ -334,31 +337,20 @@ peanut butter"
                     </div>
 
                     <p class="text-center text-emerald-700 text-sm font-medium mb-6">
-                        ✅ Shop in this order — you’ll walk the shortest path through the store!
+                        ✅ Shop in this order — you'll walk the shortest path through the store!
                     </p>
 
-                    <div class="flex flex-col md:flex-row gap-4 text-center text-sm">
-                        <a href="https://www.google.com/search?q=${encodeURIComponent('aisle ' + selectedStore + ' ' + fullAddress)}" 
-                           target="_blank"
-                           class="flex-1 bg-white border border-zinc-200 hover:border-emerald-300 rounded-3xl py-6 px-6 flex items-center justify-center gap-2 font-medium">
-                            <i class="fas fa-external-link-alt"></i>
-                            SEE ALL AISLES ON GOOGLE
-                        </a>
+                    <div class="text-center text-sm">
                         <a href="https://www.google.com/maps/search/${encodeURIComponent(selectedStore + ' ' + fullAddress)}" 
                            target="_blank"
-                           class="flex-1 bg-white border border-zinc-200 hover:border-emerald-300 rounded-3xl py-6 px-6 flex items-center justify-center gap-2 font-medium">
+                           class="w-full bg-white border border-zinc-200 hover:border-emerald-300 rounded-3xl py-6 px-6 flex items-center justify-center gap-2 font-medium">
                             <i class="fas fa-map-marked-alt"></i>
                             OPEN STORE IN MAPS
                         </a>
                     </div>
 
-                    <div class="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-6 text-xs">
-                        <p class="font-semibold text-amber-800 mb-2">💡 Pro Tip</p>
-                        <p class="text-amber-700">Aisle numbers are based on the latest Google search results and shopper reports for <strong>${selectedStore}</strong>. Locations can shift slightly — this is the most accurate public data available right now.</p>
-                    </div>
-
                     <button onclick="document.getElementById('results').classList.add('hidden'); document.getElementById('list-input').focus();"
-                            class="mt-8 w-full py-4 bg-zinc-100 hover:bg-zinc-200 rounded-3xl font-medium text-zinc-700">
+                            class="mt-4 w-full py-4 bg-zinc-100 hover:bg-zinc-200 rounded-3xl font-medium text-zinc-700">
                         Edit list &amp; scan again
                     </button>
                 </div>`;
@@ -367,7 +359,6 @@ peanut butter"
             resultsDiv.classList.remove('hidden');
         }
 
-        // Removed auto-load on page open — user must enter ZIP now
         window.onload = () => {
             // No automatic findStores() call
         };
