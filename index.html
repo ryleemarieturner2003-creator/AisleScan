@@ -183,7 +183,7 @@ peanut butter"
             try {
                 const geo = await geocodeZip(zipInput);
                 
-                const placesUrl = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&filter=circle:${geo.lon},${geo.lat},15000&bias=proximity:${geo.lon},${geo.lat}&limit=12&apiKey=${GEOAPIFY_API_KEY}`;
+                const placesUrl = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&filter=circle:${geo.lon},${geo.lat},25000&bias=proximity:${geo.lon},${geo.lat}&limit=12&apiKey=${GEOAPIFY_API_KEY}`;
                 
                 const res = await fetch(placesUrl);
                 const data = await res.json();
